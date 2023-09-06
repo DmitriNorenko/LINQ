@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using LINQ;
 
 namespace LINQ
@@ -11,12 +12,12 @@ namespace LINQ
     {
         public static char Page = ' ';
 
-        public static char Selection(List<Contact> phonebook)
+        public static void Selection(List<Contact> phonebook)
         {
-           
-            IEnumerable<Contact> page = null;
             while (true)
             {
+                IEnumerable<Contact> page = from contact in phonebook orderby contact.Name, contact.LastName select contact;
+
                 Console.WriteLine("\n Введите номер желаемой страницы(1-3): ");
                 Page = Console.ReadKey().KeyChar;
                 Console.Clear();
@@ -24,17 +25,17 @@ namespace LINQ
                 switch (Page)
                 {
                     case ('1'):
-                        page = phonebook.Take(2);
+                        page = page.Take(2);
                         break;
                     case ('2'):
-                        page = phonebook.Skip(2).Take(2);
+                        page = page.Skip(2).Take(2);
                         break;
                     case ('3'):
-                        page = phonebook.Skip(4);
+                        page = page.Skip(4);
                         break;
 
                     default:
-                        Console.WriteLine(" - Такой страницы не существует.");
+                        Console.WriteLine(" Такой страницы не существует.");
                         continue;
 
                 }
