@@ -13,26 +13,35 @@ namespace LINQ
 
         public static char Selection(List<Contact> phonebook)
         {
+           
+            IEnumerable<Contact> page = null;
             while (true)
             {
-                Console.WriteLine("Введите номер желаемой страницы(1-3): ");
+                Console.WriteLine("\n Введите номер желаемой страницы(1-3): ");
                 Page = Console.ReadKey().KeyChar;
+                Console.Clear();
 
                 switch (Page)
                 {
                     case ('1'):
-                        var Page1 = phonebook.Take(2);
+                        page = phonebook.Take(2);
                         break;
                     case ('2'):
-                        var Page2 = phonebook.Skip(2).Take(2);
+                        page = phonebook.Skip(2).Take(2);
                         break;
                     case ('3'):
-                        var Page3 = phonebook.Skip(4);
+                        page = phonebook.Skip(4);
                         break;
 
                     default:
-                        Console.WriteLine("Такой страницы не существует.");
-                        break;
+                        Console.WriteLine(" - Такой страницы не существует.");
+                        continue;
+
+                }
+                Console.WriteLine();
+                foreach (var name in page)
+                {
+                    Console.WriteLine("* " + name.Name + " - " + name.PhoneNumber);
                 }
             }
         }

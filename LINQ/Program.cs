@@ -15,7 +15,7 @@ namespace LINQ
             phoneBook.Add(new Contact("Сергей", "Брин", 799900000013, "serg@example.com"));
             phoneBook.Add(new Contact("Иннокентий", "Смоктуновский", 799900000013, "innokentii@example.com"));
 
-
+            PageSelection.Selection(phoneBook);
         }
     }
 }
