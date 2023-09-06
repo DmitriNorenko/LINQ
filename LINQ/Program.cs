@@ -1,4 +1,6 @@
-﻿namespace LINQ
+﻿using LINQ;
+
+namespace LINQ
 {
     public class Program
     {
@@ -12,6 +14,8 @@
             phoneBook.Add(new Contact("Валерий", "Леонтьев", 79990000012, "valera@example.com"));
             phoneBook.Add(new Contact("Сергей", "Брин", 799900000013, "serg@example.com"));
             phoneBook.Add(new Contact("Иннокентий", "Смоктуновский", 799900000013, "innokentii@example.com"));
+
+
         }
     }
 }
